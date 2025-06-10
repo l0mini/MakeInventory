@@ -31,7 +31,8 @@ public class UIMainMenu : MonoBehaviour
 
     public void OpenMainMenu()
     {
-        gameObject.SetActive(false);
+        UIManager.Instance.UIStatus.gameObject.SetActive(false);
+        UIManager.Instance.UIInventory.gameObject.SetActive(false);
         UIManager.Instance.UIMainMenu.gameObject.SetActive(true);
     }
 
