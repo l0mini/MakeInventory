@@ -9,10 +9,12 @@ public class UIStatus : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI goldText;
+
     [SerializeField] private TextMeshProUGUI attackText;
     [SerializeField] private TextMeshProUGUI defenseText;
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private TextMeshProUGUI criticalText;
+
     [SerializeField] private Button mainMenuButton;
     private void Start()
     {
@@ -24,9 +26,9 @@ public class UIStatus : MonoBehaviour
         nameText.text = $"{character.Name}";
         levelText.text = $"{character.Level}";
         goldText.text = $"{character.Gold}";
-        attackText.text = $"{character.Attack}";
-        defenseText.text = $"{character.Defense}";
-        healthText.text = $"{character.Health}";
-        criticalText.text = $"{character.Critical}";
+        attackText.text = $"{character.TotalAttack}";
+        defenseText.text = $"{character.TotalDefense}";
+        healthText.text = $"{character.TotalHealth}";
+        criticalText.text = $"{character.TotalCritical}";
     }
 }

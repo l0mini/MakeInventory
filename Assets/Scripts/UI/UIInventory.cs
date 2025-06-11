@@ -33,6 +33,8 @@ public class UIInventory : MonoBehaviour
 
     public void InitInventoryUI()
     {
+        var player = GameManager.Instance.Player;
+
         for (int i = 0; i < slotCount; i++)
         {
             GameObject go = Instantiate(slotPrefab, slotParent);
@@ -40,12 +42,31 @@ public class UIInventory : MonoBehaviour
             slots.Add(slot);
 
             ItemData item = null;
-            if (GameManager.Instance.Player.Inventory.Count > i)
+            if (player.Inventory.Count > i)
             {
-                item = GameManager.Instance.Player.Inventory[i];
+                item = player.Inventory[i];
             }
 
-            slot.SetItem(item);
+            slot.SetItem(item, player);
+        }
+    }
+
+    public void RefreshInventoryUI()
+    {
+        var player = GameManager.Instance.Player;
+
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (i < GameManager.Instance.Player.Inventory.Count)
+            {
+                slots[i].SetItem(player.Inventory[i], player);
+            }
+            else
+            {
+                slots[i].SetItem(null,player);
+            }
+
+            slots[i].gameObject.SetActive(true);
         }
     }
 }
