@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Character
 {
@@ -14,6 +12,8 @@ public class Character
     public int BaseHealth = 100;
     public int BaseCritical = 15;
     public List<ItemData> Inventory { get; private set; } = new List<ItemData>();
+
+    // 같은 타입의 장비를 장칙시 자동으로 해제 될 수 있게 딕셔너리 사용
     public Dictionary<ItemType, ItemData> EquippedItems { get; private set; } = new Dictionary<ItemType, ItemData>();
 
     public int TotalAttack => BaseAttack + EquippedItems.Values.Sum(item => item.Attack);
@@ -34,15 +34,15 @@ public class Character
         Inventory = inventory;
     }
 
-    public void Equip(ItemData item)
+    public void Equip(ItemData item) // 장착
     {
         EquippedItems[item.Type] = item;
         Debug.Log($"이큅{EquippedItems.Count}");
     }
 
-    public void UnEquip(ItemData item)
+    public void UnEquip(ItemData item) // 해제
     {
-        if (EquippedItems.ContainsKey(item.Type) && EquippedItems[item.Type] == item)
+        if (EquippedItems.ContainsKey(item.Type) && EquippedItems[item.Type] == item) // 키값 비교
         {
             EquippedItems.Remove(item.Type);
         }
