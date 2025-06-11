@@ -15,23 +15,23 @@ public class UIInventory : MonoBehaviour
 
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Transform slotParent;
-    [SerializeField] private int slotCount = 40;
+    [SerializeField] private int slotCount = 40; // 슬롯 생성 갯수
 
     private List<UISlot> slots = new List<UISlot>();
 
     private void Start()
     {
-        mainMenuButton.onClick.AddListener(UIManager.Instance.UIMainMenu.OpenMainMenu);
+        mainMenuButton.onClick.AddListener(UIManager.Instance.UIMainMenu.OpenMainMenu); // 버튼에 메소드 연결
     }
 
-    public void SetCharacter(Character character)
+    public void SetCharacter(Character character) // 캐릭터 정보 UI 세팅
     {
         nameText.text = $"{character.Name}";
         levelText.text = $"{character.Level}";
         goldText.text = $"{character.Gold}";
     }
 
-    public void InitInventoryUI()
+    public void InitInventoryUI() // 시작시 빈슬롯 생성 및 인벤토리 리스트 내 아이템 세팅
     {
         var player = GameManager.Instance.Player;
 
@@ -51,7 +51,7 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    public void RefreshInventoryUI()
+    public void RefreshInventoryUI() // 아이템 장착 & 해제시 UI 다시 세팅
     {
         var player = GameManager.Instance.Player;
 

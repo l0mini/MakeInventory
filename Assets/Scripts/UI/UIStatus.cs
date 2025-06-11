@@ -18,10 +18,10 @@ public class UIStatus : MonoBehaviour
     [SerializeField] private Button mainMenuButton;
     private void Start()
     {
-        mainMenuButton.onClick.AddListener(UIManager.Instance.UIMainMenu.OpenMainMenu);
+        mainMenuButton.onClick.AddListener(UIManager.Instance.UIMainMenu.OpenMainMenu); // 버튼에 메소드 연결
     }
 
-    public void SetCharacter(Character character)
+    public void SetCharacter(Character character) // 캐릭터 정보 UI 세팅
     {
         nameText.text = $"{character.Name}";
         levelText.text = $"{character.Level}";

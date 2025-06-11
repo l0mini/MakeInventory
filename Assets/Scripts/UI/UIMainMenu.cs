@@ -14,29 +14,29 @@ public class UIMainMenu : MonoBehaviour
 
     private void Start()
     {
-        statusButton.onClick.AddListener(OpenStatus);
-        InventoryButton.onClick.AddListener(OpenInventory);
+        statusButton.onClick.AddListener(OpenStatus);       // 버튼에 메소드 연결
+        InventoryButton.onClick.AddListener(OpenInventory); // 버튼에 메소드 연결
     }
-    public void OpenStatus()
+    public void OpenStatus() // 스텟창 오픈 버튼
     {
         UIManager.Instance.UIMainMenu.gameObject.SetActive(false);
         UIManager.Instance.UIStatus.gameObject.SetActive(true);
     }
 
-    public void OpenInventory()
+    public void OpenInventory() // 인벤창 오픈 버튼
     {
         UIManager.Instance.UIMainMenu.gameObject.SetActive(false) ;
         UIManager.Instance.UIInventory.gameObject.SetActive(true) ;
     }
 
-    public void OpenMainMenu()
+    public void OpenMainMenu() // 메인메뉴 오픈 버튼
     {
         UIManager.Instance.UIStatus.gameObject.SetActive(false);
         UIManager.Instance.UIInventory.gameObject.SetActive(false);
         UIManager.Instance.UIMainMenu.gameObject.SetActive(true);
     }
 
-    public void SetCharacter(Character character)
+    public void SetCharacter(Character character) // 캐릭터 정보 UI
     {
         nameText.text = $"{character.Name}";
         levelText.text = $"{character.Level}";

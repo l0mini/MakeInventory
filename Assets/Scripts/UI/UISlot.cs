@@ -49,7 +49,7 @@ public class UISlot : MonoBehaviour
         UIManager.Instance.UIStatus.SetCharacter(player);
     }
 
-    private void RefreshUI()
+    private void RefreshUI() // 장착시 슬롯에 E를 표시하기위한 함수
     {
         if (itemData == null) return;
 
